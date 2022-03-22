@@ -1,9 +1,13 @@
 {
-    "reporter": "mocha-junit-reporter",
-    "reporterOptions":{
-        "mochaFile": "reports/junit/test-results.[hash].xml",
-        "testsuitesTitle": false
-    }
-
-
+    
+    "reporter": "cypress-mochawesome-reporter",
+    "reporterOptions": {
+      "reportDir": "cypress/reports",
+      "charts": true,
+      "reportPageTitle": "My Test Suite",
+      "embeddedScreenshots": true,
+      "inlineAssets": true
+    },
+    "video": false
+    
 }
