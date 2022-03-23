@@ -1,6 +1,5 @@
 node {
     
-    deff app
     stage('Clone repository'){
         checkout scm
     }
