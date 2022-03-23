@@ -12,10 +12,9 @@ pipeline {
         stage('Deploying'){
             echo "Buildar a aplicação"
         }
-        stage('Testing'){
+        stage('Push image'){
             steps{
-                bat 'npm i'
-                bat 'npm run cy:run --browser ${BROWSER} --spec ${}'
+                docker.withRegistry('')
             }
         }
         stage('DeployingApp'){
