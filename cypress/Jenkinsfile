@@ -18,7 +18,7 @@ pipeline {
                 bat 'npm run cy:run --browser ${BROWSER} --spec ${}'
             }
         }
-        stage('Deploying'){
+        stage('DeployingApp'){
             echo "Deploy the application"
         }
     }
