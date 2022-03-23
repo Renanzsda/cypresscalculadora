@@ -5,6 +5,7 @@ node {
     }
     stage('Build image'){
         sh "cd cypress && pwd"
+        sh "ls"
         def customImage = docker.build("renanziinz/my-cypress-image")
     }
     stage('Test image'){
