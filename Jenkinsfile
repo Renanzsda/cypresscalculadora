@@ -3,7 +3,7 @@ pipeline {
    
     parameters {
         string(name:'SPEC',defaultValue: "cypress/cypress/integration/**/**",description:"Acessar aonde estão os scripts que serão executas")
-        choice(name: "BROWSER", choises: ['chrome','edge','firefox'], description: "Escolha o browser que você deseja")
+        choice(name: "BROWSER", choices: ['chrome','edge','firefox'], description: "Escolha o browser que você deseja")
     }
     options{
         ansiColor('xterm')
@@ -18,7 +18,7 @@ pipeline {
                 bat 'npm run cy:run --browser ${BROWSER} --spec ${}'
             }
         }
-        stage('Deploying'){
+        stage('DeployingApp'){
             echo "Deploy the application"
         }
     }
