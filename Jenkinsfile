@@ -1,35 +1,23 @@
-pipeline {
-  agent any
-   
-    parameters {
-        string(name:'SPEC',defaultValue: "cypress/cypress/integration/**/**",description:"Acessar aonde estão os scripts que serão executas")
-        choice(name: "BROWSER", choices: ['chrome','edge','firefox'], description: "Escolha o browser que você deseja")
+node {
+    deff app
+    stage('Clone repository'){
+        checkout scm
     }
-    options{
-        ansiColor('xterm')
+    stage('Build image'){
+        app = docker.build('renanziinz/my-cypress-image')
     }
-    stages{
-        stage('Deploying'){
-            steps{
-                echo "Buildar a aplicação"
-            }
+    stage('Test image'){
+        app.insider{
+            sh 'echo "Tests passed"'
+
         }
-        stage('Testing'){
-            steps{
-                sh 'npm i'
-                sh 'npm run cy:run --browser ${BROWSER} --spec ${}'
-            }
-        }
-        stage('DeployingApp'){
-            steps{
-                echo "Deploy the application"
-            }
+    }
+    stage('Push image'){
+        docker.withRegistry("https://registry.hub.docker.com","docker-hub-credentials"){
+            app.push("${env.BUILD_NUMBER}")
+            app.push("latest")
         }
     }
 
-    post{
-        always{
-            publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: true, reportDir: 'cypress/cypress/reports', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: ''])
-        }
-    }
+
 }
