@@ -16,8 +16,8 @@ pipeline {
         }
         stage('Testing'){
             steps{
-                bat 'npm i'
-                bat 'npm run cy:run --browser ${BROWSER} --spec ${}'
+                sh 'npm i'
+                sh 'npm run cy:run --browser ${BROWSER} --spec ${}'
             }
         }
         stage('DeployingApp'){
