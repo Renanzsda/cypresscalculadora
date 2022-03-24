@@ -1,9 +1,7 @@
 node {
     
     stage('Clone repository'){
-        steps{
         checkout scm
-        }
     }
      
     // stage('Build image'){
@@ -19,10 +17,7 @@ node {
     // }
     
     stage('Test image'){
-        steps{
             echo "Tests passed"
-
-        }
     }
     
     stage('Push image'){
