@@ -12,7 +12,7 @@ node {
         docker.withRegistry("https://registry.hub.docker.com","docker-hub-credentials"){
                 customImage.push("${env.BUILD_NUMBER}")
                 customImage.push("latest")
-                sh 'docker ps -a'
+                customimage.run("-it -p '81:80'")
                 
          }
         }
