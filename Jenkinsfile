@@ -3,15 +3,13 @@ node {
     stage('Clone repository'){
         checkout scm
     }
-     
-    stage('Build image'){
-            sh "pwd"
-            dir('cypress') {
-            sh "pwd"
-                                    }
-            sh "pwd"
 
+
+    stage('Build image'){
+        dir('cypress'){
+        sh 'pwd'
         def customImage = docker.build("renanziinz/my-cypress-image")
+    }
     }
     
     stage('Test image'){
