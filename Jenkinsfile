@@ -4,19 +4,19 @@ node {
         checkout scm
     }
      
-    stage('Build image'){
-        step{
-            sh "pwd"
-            dir('cypress') {
-            sh "pwd"
-                                    }
-            sh "pwd"
+    // stage('Build image'){
+    //     steps{
+    //         sh "pwd"
+    //         dir('cypress') {
+    //         sh "pwd"
+    //                                 }
+    //         sh "pwd"
 
-        def customImage = docker.build("renanziinz/my-cypress-image")
-    }
-    }
+    //     def customImage = docker.build("renanziinz/my-cypress-image")
+    // }
+    // }
     stage('Test image'){
-        step{
+        steps{
             sh 'echo "Tests passed"'
 
         }
