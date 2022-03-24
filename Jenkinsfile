@@ -18,7 +18,7 @@ node {
     
     stage('Test image'){
         steps{
-            sh 'echo "Tests passed"'
+            echo "Tests passed"
 
         }
     }
