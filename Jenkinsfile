@@ -18,7 +18,7 @@ node {
     }
     stage('run'){
         dir('cypress'){
-        docker ps -a
+        sh 'docker ps -a'
         }
     }
 }
