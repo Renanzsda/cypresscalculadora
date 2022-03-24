@@ -12,7 +12,13 @@ node {
         docker.withRegistry("https://registry.hub.docker.com","docker-hub-credentials"){
                 customImage.push("${env.BUILD_NUMBER}")
                 customImage.push("latest")
+                
          }
+        }
+    }
+    stage('run'){
+        dir('cypress'){
+        docker ps -a
         }
     }
 }
