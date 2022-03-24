@@ -4,14 +4,15 @@ node {
         checkout scm
     }
     steps {
-    sh "pwd"
-    dir('cypress') {
-      sh "pwd"
-    }
-    sh "pwd"
+        sh "pwd"
+    dir('your-sub-directory') {
+        sh "pwd"
+            }
+        sh "pwd"
 } 
     stage('Build image'){
-        def customImage = docker.build(sh "cd cypress && pwd && ls","renanziinz/my-cypress-image")
+        
+        def customImage = docker.build("renanziinz/my-cypress-image")
     }
     stage('Test image'){
         steps{
