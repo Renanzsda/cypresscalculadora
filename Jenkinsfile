@@ -5,9 +5,9 @@ node {
     }
      
     stage('Build image'){
-        steps {
+        step{
             sh "pwd"
-            dir('your-sub-directory') {
+            dir('cypress') {
             sh "pwd"
                                     }
             sh "pwd"
@@ -16,7 +16,7 @@ node {
     }
     }
     stage('Test image'){
-        steps{
+        step{
             sh 'echo "Tests passed"'
 
         }
